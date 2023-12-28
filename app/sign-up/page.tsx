@@ -12,7 +12,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
-import { domain } from "../sign-in/page"
 
 export default function SignUP() {
 
@@ -35,7 +34,7 @@ export default function SignUP() {
 
             // console.log(rawData)
 
-            const response = await fetch(`${domain}/api/user`, {
+            const response = await fetch(`/api/user`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

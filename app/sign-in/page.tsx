@@ -14,8 +14,6 @@ import { cookies } from 'next/headers'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
 
-export const domain = process.env.NEXT_ENV === 'production' ? 'https://notesecure.vercel.app' : 'http://localhost:3000'
-
 export default function SignIn() {
 
     const cookieStore = cookies()
@@ -36,7 +34,7 @@ export default function SignIn() {
                 password: password
             }
 
-            const response = await fetch(`${domain}/api/user/login`, {
+            const response = await fetch(`/api/user/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
