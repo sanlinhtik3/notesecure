@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label"
 import { cookies } from 'next/headers'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
+import { domain } from "../pub-domain"
 
 export default function SignIn() {
 
@@ -34,7 +35,7 @@ export default function SignIn() {
                 password: password
             }
 
-            const response = await fetch(`/api/user/login`, {
+            const response = await fetch(`${domain}/api/user/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
