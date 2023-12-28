@@ -10,7 +10,15 @@ import Link from "next/link";
 import EditUser from "../components/EditUser";
 import { AES, enc } from "crypto-js";
 
+interface User {
+    _id: string;
+    name: string;
+    email: string;
+    // Other properties
+}
+
 const fetcher = (url: string, options: RequestInit) => fetch(url, options).then((res) => res.json());
+
 
 
 export default function UserTable() {
@@ -80,8 +88,9 @@ export default function UserTable() {
 
     const sortedItems = React.useMemo(() => {
         return [items].sort((a: User, b: User) => {
-            const first = a[sortDescriptor.column as keyof User] as number;
-            const second = b[sortDescriptor.column as keyof User] as number;
+            // const first = a[sortDescriptor.column as keyof User] as number;
+            const first = a[sortDescriptor.column as keyof User] as unknown as number;
+            const second = b[sortDescriptor.column as keyof User] as unknown as number;
             const cmp = first < second ? -1 : first > second ? 1 : 0;
 
             return sortDescriptor.direction === "descending" ? -cmp : cmp;
@@ -124,7 +133,7 @@ export default function UserTable() {
             case "actions":
                 return (
                     <div className="relative flex justify-end items-center gap-2">
-                        <Link href={`#`}>Go to profile</Link>
+                        <Link href={`/note/${user._id}`}>Go to profile</Link>
                         <EditUser note={user} />
                         <form action={deletedUser}>
                             <input type="hidden" name="userId" value={user._id} />
@@ -271,7 +280,7 @@ export default function UserTable() {
                 loadingState={loadingState}
                 emptyContent={"No users found"}
             >
-                {(item) => (
+                {(item: User) => (
                     <TableRow key={item?._id}>
                         {/* {(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>} */}
                         {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}

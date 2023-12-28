@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
             const user = await Note.findById(id);
             return NextResponse.json({
                 _id: user?._id,
-                name: AES.decrypt(user?.name, password).toString(enc.Utf8),
+                name: user?.name,
                 email: user?.email
             })
         }

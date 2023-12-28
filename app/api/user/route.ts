@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
             const user = await User.findById(id);
             return NextResponse.json({
                 _id: user?._id,
-                name: AES.decrypt(user?.name, password).toString(enc.Utf8),
+                name: user?.name,
                 email: user?.email
             })
         }
@@ -40,8 +40,9 @@ export async function GET(request: NextRequest) {
         const totalPages = Math.ceil(totalUsers / limit);
 
         // Calculate next and previous page URLs
-        const nextPage = page < totalPages ? `http://localhost:3000/api/user?page=${parseInt(page)}` : null;
-        const prevPage = page > 1 ? `http://localhost:3000/api/user?page=${parseInt(page) - 1}` : null;
+        // const nextPage = page < totalPages ? `http://localhost:3000/api/user?page=${parseInt(page)}` : null;
+        const nextPage = page < totalPages ? `http://localhost:3000/api/user?page=${page}` : null;
+        const prevPage = page > 1 ? `http://localhost:3000/api/user?page=${page - 1}` : null;
 
 
         return NextResponse.json({
@@ -66,7 +67,6 @@ export async function POST(request: Request, response: Response) {
     // }
 
     const data = await request.json()
-    // return NextResponse.json(data)
 
     // Validate that email and password are provided
     if (!data.email || !data.password) {
@@ -82,6 +82,7 @@ export async function POST(request: Request, response: Response) {
             return NextResponse.json({ error: 'existingUser' });
         }
 
+
         // Hash the password using bcrypt before storing it in the database
         const hashedPassword = await bcrypt.hash(data.password, 10);
 
@@ -89,7 +90,7 @@ export async function POST(request: Request, response: Response) {
         const encrypted = AES.encrypt(data.name, password).toString();
 
         const users = await User.create({
-            name: encrypted,
+            name: data.name,
             email: data.email,
             password: hashedPassword
         });

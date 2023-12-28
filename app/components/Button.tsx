@@ -1,6 +1,8 @@
 "use client"
 
-import { Button } from "@nextui-org/react"
+import { Button } from "@/components/ui/button"
+// import { Button } from "@nextui-org/react"
+import { Loader2 } from "lucide-react"
 import { useEffect } from "react"
 import { useFormStatus } from "react-dom"
 
@@ -14,7 +16,16 @@ export function ButtonX({ children, color, className }: { children: React.ReactN
                 {pending ? 'Saving...' : children}
             </button> */}
 
-            <Button type="submit" isLoading={pending} color={color} className={className}>{children}</Button>
+            <Button type="submit" disabled={pending}>
+                {pending ? (
+                    <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Please wait
+                    </>
+                ) : children}
+            </Button>
+
+            {/* <Button type="submit" isLoading={pending} color={color} className={className}>{children}</Button> */}
         </>
     )
 }

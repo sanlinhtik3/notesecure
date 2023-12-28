@@ -1,8 +1,9 @@
 "use client"
 
 import React from "react";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarMenuToggle, NavbarMenuItem, NavbarMenu } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, NavbarMenuToggle, NavbarMenuItem, NavbarMenu } from "@nextui-org/react";
 import HasUser from "../../HasUser";
+import Link from "next/link";
 // import { AcmeLogo } from "./AcmeLogo.jsx";
 
 export default function Navbarv() {
@@ -36,18 +37,13 @@ export default function Navbarv() {
 
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
                 <NavbarItem>
-                    <Link color="foreground" href="#">
-                        Features
+                    <Link color="foreground" href="/note">
+                        Note
                     </Link>
                 </NavbarItem>
                 <NavbarItem isActive>
-                    <Link href="#" aria-current="page">
-                        Customers
-                    </Link>
-                </NavbarItem>
-                <NavbarItem>
-                    <Link color="foreground" href="#">
-                        Integrations
+                    <Link href="/admin" aria-current="page">
+                        Admin
                     </Link>
                 </NavbarItem>
             </NavbarContent>
@@ -70,7 +66,6 @@ export default function Navbarv() {
                             }
                             className="w-full"
                             href="#"
-                            size="lg"
                         >
                             {item}
                         </Link>
