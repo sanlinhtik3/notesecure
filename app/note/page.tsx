@@ -38,7 +38,7 @@ export default async function Page() {
 
             <div className="grid lg:grid-cols-2 gap-5">
                 {notes?.map((note: any) => (
-                    <div key={note._id} className=" border rounded-2xl p-10 shadow-lg shadow-sky-100">
+                    <div key={note._id} className=" border rounded-2xl p-10 shadow-sm">
 
                         <Suspense fallback={<div>Loading...</div>}>
                             <Avatar userId={note.user} />
@@ -69,7 +69,7 @@ export default async function Page() {
 
             <div className="grid lg:grid-cols-2 gap-5">
                 {notes?.map((note: any) => (
-                    <div key={note._id} className=" border rounded-2xl p-10 shadow-lg shadow-sky-100">
+                    <div key={note._id} className=" border rounded-2xl p-10 shadow-sm">
 
                         <Suspense fallback={<div>Loading...</div>}>
                             <Avatar userId={note.user} />

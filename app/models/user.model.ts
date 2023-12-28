@@ -4,21 +4,21 @@ const UserSchema = new Schema(
     {
         name: {
             type: String,
-            required: [true, "Please fill your Email"],
+            // required: [true, "Please fill your Email"],
         },
         email: {
             type: String,
-            required: [true, "Please fill your Email"],
+            // required: [true, "Please fill your Email"],
         },
         password: {
             type: String,
-            required: [true, "Please fill your password"],
+            // required: [true, "Please fill your password"],
         },
         asset: {
             type: Number,
             default: 0,
             enum: [0, 1, 2, 3, 4],
-            required: [true, "Please fill your Access"],
+            // required: [true, "Please fill your Access"],
         },
     },
     { timestamps: true }

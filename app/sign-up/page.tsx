@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button"
 import {
     Card,
     CardContent,
@@ -7,11 +6,13 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import Link from "next/link"
 import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
+import { domain } from "../sign-in/page"
 
 export default function SignUP() {
 
@@ -22,22 +23,19 @@ export default function SignUP() {
         redirect('/admin')
     }
 
-    async function create(formData: FormData) {
+    async function signUp(formData: FormData) {
         'use server'
         try {
-            const name = formData.get('name')
-            const email = formData.get('email')
-            const password = formData.get('password')
-
             const rawData = {
-                name: name,
-                email: email,
-                password: password
+                name: formData.get('name'),
+                email: formData.get('email'),
+                password: formData.get('password'),
+                asset: 0,
             }
 
             // console.log(rawData)
 
-            const response = await fetch('http://localhost:3000/api/user', {
+            const response = await fetch(`${domain}/api/user`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -51,9 +49,10 @@ export default function SignUP() {
 
             const data = await response.json()
 
-            cookies().set('email', data.user.email, { secure: true })
-            cookies().set('name', data.user.name, { secure: true })
-            cookies().set('_id', data.user._id, { secure: true })
+            cookies().set('email', data.email,)
+            cookies().set('name', data.name,)
+            cookies().set('_id', data._id,)
+            cookies().set('asset', data.asset,)
 
             console.log('Sign Up Success', data)
         } catch (e) {
@@ -64,7 +63,7 @@ export default function SignUP() {
     return (
         <>
             <div className=" flex justify-center items-center h-screen">
-                <form className="space-y-4 md:space-y-6" action={create}>
+                <form className="space-y-4 md:space-y-6" action={signUp}>
                     <Card>
                         <CardHeader>
                             <CardTitle>Create Account</CardTitle>
@@ -85,6 +84,7 @@ export default function SignUP() {
                                 <Label htmlFor="password">Password</Label>
                                 <Input id="password" type="password" name="password" />
                             </div>
+                            <button type="submit">Sign Up</button>
                         </CardContent>
                         <CardFooter>
                             <Button type="submit">Sign Up</Button>
