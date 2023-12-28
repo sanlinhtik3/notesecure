@@ -32,7 +32,7 @@ export default function UserTable() {
     //     keepPreviousData: true,
     // });
 
-    const { data, isLoading } = useSWR(`http://localhost:3000/api/user?page=${page}`, fetcher, {
+    const { data, isLoading } = useSWR(`/api/user?page=${page}`, fetcher, {
         keepPreviousData: true,
     });
 

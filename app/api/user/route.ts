@@ -4,6 +4,7 @@ import Error from "next/error";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import { AES, enc } from "crypto-js";
+import { domain } from "@/app/pub-domain";
 
 export async function GET(request: NextRequest) {
   await connectMongoDB();
@@ -43,11 +44,9 @@ export async function GET(request: NextRequest) {
     const totalPages = Math.ceil(totalUsers / limit);
 
     // Calculate next and previous page URLs
-    // const nextPage = page < totalPages ? `http://localhost:3000/api/user?page=${parseInt(page)}` : null;
     const nextPage =
-      page < totalPages ? `http://localhost:3000/api/user?page=${page}` : null;
-    const prevPage =
-      page > 1 ? `http://localhost:3000/api/user?page=${page - 1}` : null;
+      page < totalPages ? `${domain}/api/user?page=${page}` : null;
+    const prevPage = page > 1 ? `${domain}/api/user?page=${page - 1}` : null;
 
     return NextResponse.json({
       count: totalUsers,
