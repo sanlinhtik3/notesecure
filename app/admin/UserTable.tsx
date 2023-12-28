@@ -9,6 +9,7 @@ import { ButtonX } from "../components/Button";
 import Link from "next/link";
 import EditUser from "../components/EditUser";
 import { AES, enc } from "crypto-js";
+import { domain } from "../pub-domain";
 
 interface User {
     _id: string;
@@ -32,7 +33,7 @@ export default function UserTable() {
     //     keepPreviousData: true,
     // });
 
-    const { data, isLoading } = useSWR(`/api/user?page=${page}`, fetcher, {
+    const { data, isLoading } = useSWR(`${domain}/api/user?page=${page}`, fetcher, {
         keepPreviousData: true,
     });
 

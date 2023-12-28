@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
+import { domain } from "./pub-domain";
 
 export async function create(formData: FormData) {
   "use server";
@@ -16,7 +17,7 @@ export async function create(formData: FormData) {
 
   console.log(rawData);
 
-  const createUser = await fetch("/api/note", {
+  const createUser = await fetch(`${domain}/api/note`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -39,7 +40,7 @@ export async function deletedNote(formData: FormData) {
 
   // console.log("userId", userId);
 
-  const deletedNote = await fetch(`/api/note/`, {
+  const deletedNote = await fetch(`${domain}/api/note/`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -70,7 +71,7 @@ export async function edit(formData: FormData) {
 
   console.log(rawData);
 
-  const createUser = await fetch(`/api/note/${_id}`, {
+  const createUser = await fetch(`${domain}/api/note/${_id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -93,7 +94,7 @@ export async function deletedUser(formData: FormData) {
 
   // console.log("userId", userId);
 
-  const deletedNote = await fetch(`/api/user/`, {
+  const deletedNote = await fetch(`${domain}/api/user/`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -126,7 +127,7 @@ export async function editUser(formData: FormData) {
 
   console.log(rawData);
 
-  const createUser = await fetch(`/api/user/`, {
+  const createUser = await fetch(`${domain}/api/user/`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
