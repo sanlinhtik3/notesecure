@@ -3,9 +3,12 @@
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
 import { edit } from "../action";
 import { ButtonX } from "./Button";
+import Editor from "../note/create/Editor";
+import { useState } from "react";
 
 export default function EditNote({ note }: any) {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const [editorContent, setEditorContent] = useState(note?.note)
 
     return (
         <>
@@ -17,7 +20,7 @@ export default function EditNote({ note }: any) {
                             <ModalHeader className="flex flex-col gap-1">Edit Note</ModalHeader>
                             <form action={edit}>
                                 <ModalBody>
-                                    <p>{note?.note}</p>
+                                    {/* <p>{note?.note}</p> */}
 
                                     <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                         <div className="sm:col-span-2">
@@ -27,7 +30,15 @@ export default function EditNote({ note }: any) {
                                         </div>
                                         <div className="sm:col-span-2">
                                             <label htmlFor="note" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Note</label>
-                                            <textarea name="note" id="note" rows={8} defaultValue={note?.note} className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Your description here" />
+                                            <input name="note" id="note"
+                                                type="hidden"
+                                                value={JSON.stringify(editorContent, null, 2) ?? undefined} onChange={e => setEditorContent(JSON.parse(e.target.value))}
+                                                defaultValue={note?.note} className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Your description here" />
+                                            <Editor
+                                                setEditorContent={setEditorContent}
+                                                editorContent={editorContent}
+                                                initialContent={note?.note}
+                                            />
                                         </div>
                                     </div>
 

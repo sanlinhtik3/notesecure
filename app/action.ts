@@ -1,7 +1,6 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { NextResponse } from "next/server";
 import { domain } from "./pub-domain";
 
 export async function create(formData: FormData) {
