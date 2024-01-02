@@ -14,13 +14,13 @@ type editorProps = {
 
 export default function Editor({ initialContent, editorContent, setEditorContent, editable }: editorProps) {
     // Stores the editor's contents as an array of Block objects.
-    const [blocks, setBlocks] = useState<Block[] | null>(null);
+    const [blocks, setBlocks] = useState<any | null>(null);
 
     // Creates a new editor instance.
     const editor: BlockNoteEditor = useBlockNote({
         editable,
         // Listens for when the editor's contents change.
-        initialContent: initialContent ? JSON.parse(initialContent) as PartialBlock[] : undefined,
+        initialContent: initialContent ? JSON.parse(initialContent) as any : undefined,
         onEditorContentChange: (editor) => {
             // Converts the editor's contents to an array of Block objects.
             setBlocks(editor.topLevelBlocks)
