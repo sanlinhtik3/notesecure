@@ -13,24 +13,24 @@ import { Label } from "@/components/ui/label"
 import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
 import { domain } from "../pub-domain"
-import CheckPassword from "../components/check-password"
+// import CheckPassword from "../components/check-password"
 
 // Password validation function
-const isPasswordValid = (password: string): boolean => {
-    const minLength = 6;
-    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-    const hasLowerCase = /[a-z]/.test(password);
-    const hasUpperCase = /[A-Z]/.test(password);
-    const hasDigit = /\d/.test(password);
+// const isPasswordValid = (password: string): boolean => {
+//     const minLength = 6;
+//     const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+//     const hasLowerCase = /[a-z]/.test(password);
+//     const hasUpperCase = /[A-Z]/.test(password);
+//     const hasDigit = /\d/.test(password);
 
-    return (
-        password.length >= minLength &&
-        hasSpecialChar &&
-        hasLowerCase &&
-        hasUpperCase &&
-        hasDigit
-    );
-};
+//     return (
+//         password.length >= minLength &&
+//         hasSpecialChar &&
+//         hasLowerCase &&
+//         hasUpperCase &&
+//         hasDigit
+//     );
+// };
 
 export default function SignUP() {
 
@@ -39,12 +39,6 @@ export default function SignUP() {
 
     if (hasCookie) {
         redirect('/admin')
-    }
-
-    const hasLocalStorage = typeof localStorage !== 'undefined';
-
-    if (hasLocalStorage && localStorage.getItem('recaptchaValue')) {
-        console.log('recaptchaValue', localStorage.getItem('recaptchaValue'))
     }
 
     async function signUp(formData: FormData) {
