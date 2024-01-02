@@ -11,9 +11,9 @@ export default function Page() {
 
     console.log(JSON.stringify(editorContent, null, 2))
 
-    // const cookieStore = cookies()
-    // const email = cookieStore.get('email')
-    // const _id = cookieStore.get('_id')
+    const cookieStore = cookies()
+    const email = cookieStore.get('email')
+    const _id = cookieStore.get('_id')
 
     return (
         <section className="bg-white dark:bg-gray-900">
@@ -22,8 +22,8 @@ export default function Page() {
                 <form action={create}>
                     <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 mb-5">
                         <div className="sm:col-span-2">
-                            {/* <input type="hidden" name="user" id="user" value={_id?.value} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" /> */}
-                            <input type="hidden" name="user" id="user" value={"658e3b14629718e6fff489b5"} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" />
+                            <input type="hidden" name="user" id="user" value={_id?.value} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" />
+                            {/* <input type="hidden" name="user" id="user" value={"658e3b14629718e6fff489b5"} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" /> */}
                         </div>
                         <div className="sm:col-span-2">
                             <label htmlFor="note" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Note</label>

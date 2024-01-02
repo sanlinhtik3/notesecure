@@ -104,11 +104,11 @@ export default function SignUP() {
                                 <Label htmlFor="email">Email</Label>
                                 <Input id="email" type="email" name="email" />
                             </div>
-                            {/* <div className="space-y-1">
+                            <div className="space-y-1">
                                 <Label htmlFor="password">Password</Label>
                                 <Input id="password" type="password" name="password" />
-                            </div> */}
-                            <CheckPassword name="password" />
+                            </div>
+                            {/* <CheckPassword name="password" /> */}
                             <button type="submit">Sign Up</button>
                         </CardContent>
                         <CardFooter>
