@@ -1,3 +1,5 @@
+"use client"
+
 import { cookies } from "next/headers"
 import { create } from "../../action"
 import { ButtonX } from "@/app/components/Button"
