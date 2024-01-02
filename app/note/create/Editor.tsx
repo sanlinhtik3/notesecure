@@ -6,19 +6,21 @@ import { BlockNoteView, useBlockNote } from "@blocknote/react";
 import "@blocknote/core/style.css";
 
 type editorProps = {
-    initialContent?: string;
+    initialContent?: any;
     editorContent?: any;
     setEditorContent?: any;
+    editable?: boolean;
 }
 
-export default function Editor({ initialContent, editorContent, setEditorContent }: editorProps) {
+export default function Editor({ initialContent, editorContent, setEditorContent, editable }: editorProps) {
     // Stores the editor's contents as an array of Block objects.
     const [blocks, setBlocks] = useState<Block[] | null>(null);
 
     // Creates a new editor instance.
     const editor: BlockNoteEditor = useBlockNote({
+        editable,
         // Listens for when the editor's contents change.
-        initialContent: initialContent ? JSON.parse(initialContent) as PartialBlock[] : null,
+        initialContent: initialContent ? JSON.parse(initialContent) as PartialBlock[] : undefined,
         onEditorContentChange: (editor) => {
             // Converts the editor's contents to an array of Block objects.
             setBlocks(editor.topLevelBlocks)
@@ -30,8 +32,8 @@ export default function Editor({ initialContent, editorContent, setEditorContent
     // objects, below.
     return (
         <div>
-            <BlockNoteView editor={editor} theme={"dark"} />
-            <pre>{JSON.stringify(blocks, null, 2)}</pre>
+            <BlockNoteView editor={editor} theme={"light"} />
+            {/* <pre>{JSON.stringify(blocks, null, 2)}</pre> */}
         </div>
     );
 }

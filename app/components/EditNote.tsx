@@ -33,7 +33,7 @@ export default function EditNote({ note }: any) {
                                             <input name="note" id="note"
                                                 type="hidden"
                                                 value={JSON.stringify(editorContent, null, 2) ?? undefined} onChange={e => setEditorContent(JSON.parse(e.target.value))}
-                                                defaultValue={note?.note} className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Your description here" />
+                                                defaultValue={JSON.stringify(note?.note)} className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Your description here" />
                                             <Editor
                                                 setEditorContent={setEditorContent}
                                                 editorContent={editorContent}
