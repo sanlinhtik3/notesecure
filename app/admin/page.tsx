@@ -17,7 +17,6 @@ export default async function Home() {
         <div>
             <h1 className=' my-10'>All User</h1>
             <UserTable />
-
         </div>
     )
 }

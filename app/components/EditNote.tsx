@@ -5,6 +5,7 @@ import { edit } from "../action";
 import { ButtonX } from "./Button";
 import Editor from "../note/create/Editor";
 import { useState } from "react";
+import NovaEditor from "../note/create/NovaEditor";
 
 export default function EditNote({ note }: any) {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -13,7 +14,7 @@ export default function EditNote({ note }: any) {
     return (
         <>
             <Button onPress={onOpen}>Edit</Button>
-            <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="lg" scrollBehavior="inside">
+            <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="full" scrollBehavior="inside">
                 <ModalContent>
                     {(onClose) => (
                         <>
@@ -30,15 +31,25 @@ export default function EditNote({ note }: any) {
                                         </div>
                                         <div className="sm:col-span-2">
                                             <label htmlFor="note" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Note</label>
-                                            <input name="note" id="note"
+                                            {/* <input name="note" id="note"
                                                 type="hidden"
                                                 value={JSON.stringify(editorContent, null, 2) ?? undefined} onChange={e => setEditorContent(JSON.parse(e.target.value))}
                                                 defaultValue={JSON.stringify(note?.note)} className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Your description here" />
-                                            <Editor
+                                             */}
+                                            <input type="hidden" value={editorContent ?? undefined} onChange={e => setEditorContent(JSON.parse(e.target.value))} name="note" id="note" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Your description here"></input>
+
+                                            {/* <Editor
                                                 setEditorContent={setEditorContent}
                                                 editorContent={editorContent}
                                                 initialContent={note?.note}
+                                            /> */}
+
+                                            {/* <NovaEditor editorContent={note?.note} /> */}
+                                            <NovaEditor
+                                                setEditorContent={setEditorContent}
+                                                editorContent={editorContent}
                                             />
+
                                         </div>
                                     </div>
 

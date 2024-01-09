@@ -117,7 +117,7 @@ export default function UserTable() {
     // RENDER CELL START
     const renderCell = React.useCallback((user: User, columnKey: React.Key) => {
         // const cellValue = user[columnKey as keyof User];
-        const cellValue = user?.name === null ? "Unknown" : AES.decrypt(user?.name, password).toString(enc.Utf8)
+        const cellValue = user?.name === null ? "Unknown" : user?.name
 
 
         switch (columnKey) {

@@ -45,7 +45,7 @@ export default async function Page() {
                         </Suspense>
 
 
-                        <h1>{note.note.substring(0, 200)}</h1>
+                        {/* <h1>{note.note.substring(0, 200)}</h1> */}
 
                         <div className="flex gap-2 mt-5">
                             <HahaBox note={note} />
@@ -76,7 +76,7 @@ export default async function Page() {
                         </Suspense>
 
 
-                        <h1>{note.note.substring(0, 200)}</h1>
+                        {/* <h1>{note.note.substring(0, 200)}</h1> */}
 
                         <div className="flex gap-2 mt-5">
                             <HahaBox note={note} />
