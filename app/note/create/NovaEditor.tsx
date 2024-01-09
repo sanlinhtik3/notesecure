@@ -1,3 +1,5 @@
+"use client"
+
 import { Editor } from "novel";
 
 export default function NovaEditor({ setEditorContent, editorContent }: any) {

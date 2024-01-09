@@ -12,13 +12,17 @@ import {
 import { deletedNote } from "../action"
 import { ButtonX } from "../components/Button"
 import Avatar from "../components/@nextx3/avatar/avatar"
+import NovaEditor from "../note/create/NovaEditor"
 
 export function NoteCard({ note: note }: any) {
     return (
-        <Card className="w-[350px]">
+        <Card className="">
             <CardHeader>
                 <Avatar userId={note.user} />
-                <CardTitle>{note.note}</CardTitle>
+                {/* <CardTitle>{note.note}</CardTitle> */}
+                <NovaEditor
+                    editorContent={note.note}
+                />
                 {/* <CardDescription>{note.note}</CardDescription> */}
             </CardHeader>
             <CardContent>
