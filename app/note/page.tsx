@@ -32,9 +32,9 @@ export default async function Page() {
 
             <h1 className=" text-3xl font-medium uppercase mb-10">All Notes</h1>
 
-            <Button asChild>
+            {/* <Button asChild>
                 <Link href={"/note/create"}>Create</Link>
-            </Button>
+            </Button> */}
 
             <div className="grid lg:grid-cols-2 gap-5">
                 {notes?.map((note: any) => (
