@@ -33,7 +33,7 @@ export default function UserTable() {
     //     keepPreviousData: true,
     // });
 
-    const { data, isLoading } = useSWR(`https://notesecure.vercel.app/api/user?page=${page}`, fetcher, {
+    const { data, isLoading } = useSWR(`${domain}/api/user?page=${page}`, fetcher, {
         keepPreviousData: true,
     });
 
