@@ -56,7 +56,7 @@ export default function UserTable() {
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [lo, setLo] = React.useState(false);
 
-    console.log('update data', lo)
+    // console.log('update data', lo)
 
     const [sortDescriptor, setSortDescriptor] = React.useState<SortDescriptor>({
         column: "age",

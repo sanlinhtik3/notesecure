@@ -5,7 +5,7 @@ export default function HasUser() {
     const cookieStore = cookies()
     const email = cookieStore.get('email')
 
-    console.log(email)
+    // console.log(email)
 
     return (
         <>

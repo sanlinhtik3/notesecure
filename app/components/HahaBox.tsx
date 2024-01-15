@@ -9,7 +9,7 @@ export default function HahaBox({ note }: any) {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const [editorContent, setEditorContent] = useState(note?.note)
 
-    console.log(JSON.parse(note.note))
+    // console.log(JSON.parse(note.note))
 
     return (
         <>

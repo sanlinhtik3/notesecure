@@ -41,11 +41,14 @@ export default function Navbarv({ _id, email, name, asset }: any) {
                         Note
                     </Link>
                 </NavbarItem>
-                <NavbarItem isActive>
-                    <Link href="/admin" aria-current="page">
-                        Admin
-                    </Link>
-                </NavbarItem>
+                {asset && parseInt(asset) === 1 && (
+                    <NavbarItem isActive>
+                        <Link href="/admin" aria-current="page">
+                            Admin
+                        </Link>
+                    </NavbarItem>
+                )}
+
             </NavbarContent>
             <NavbarContent justify="end">
                 <User

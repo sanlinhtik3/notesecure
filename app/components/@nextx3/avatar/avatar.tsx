@@ -36,7 +36,7 @@ export default function Avatar({ userId }: { userId: string }) {
         return <div>No data available for the user</div>;
     }
 
-    console.log(data)
+    // console.log(data)
 
     return (
         <>

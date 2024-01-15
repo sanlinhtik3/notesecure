@@ -3,7 +3,6 @@
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
 import { edit } from "../action";
 import { ButtonX } from "./Button";
-import Editor from "../note/create/Editor";
 import { useState } from "react";
 import NovaEditor from "../note/create/NovaEditor";
 
@@ -58,7 +57,7 @@ export default function EditNote({ note }: any) {
                                     <Button color="danger" variant="light" onPress={onClose}>
                                         Close
                                     </Button>
-                                    <ButtonX color="primary">Update</ButtonX>
+                                    <ButtonX>Update</ButtonX>
                                     {/* <Button color="primary" onPress={onClose}>
                                         Action
                                     </Button> */}

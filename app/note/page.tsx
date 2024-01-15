@@ -53,7 +53,7 @@ export default async function Page() {
 
                                     <form action={deletedNote}>
                                         <input type="text" name="userId" hidden defaultValue={note?._id} />
-                                        <ButtonX className="bg-red-100 text-red-500">Delete</ButtonX>
+                                        <ButtonX>Delete</ButtonX>
                                     </form>
                                 </div>
                             </div>
@@ -70,14 +70,14 @@ export default async function Page() {
                 <Link href={"/note/create"}>Create</Link>
             </Button>
 
+            <div className="h-10"></div>
+
             <div className="grid lg:grid-cols-2 gap-5">
                 {notes?.map((note: any) => (
                     <div key={note._id} className=" border rounded-2xl p-10 shadow-sm">
-
                         <Suspense fallback={<div>Loading...</div>}>
                             <Avatar userId={note.user} />
                         </Suspense>
-
 
                         {/* <h1>{note.note.substring(0, 200)}</h1> */}
 
@@ -88,7 +88,7 @@ export default async function Page() {
 
                             <form action={deletedNote}>
                                 <input type="text" name="userId" hidden defaultValue={note?._id} />
-                                <ButtonX className="bg-red-100 text-red-500">Delete</ButtonX>
+                                <ButtonX>Delete</ButtonX>
                             </form>
                         </div>
                     </div>

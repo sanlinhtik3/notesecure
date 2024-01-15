@@ -20,7 +20,7 @@ export default function SignIn() {
     const hasCookie = cookieStore.has('email')
 
     if (hasCookie) {
-        redirect('/note')
+        redirect('/otp')
     }
 
     async function create(formData: FormData) {
@@ -80,9 +80,9 @@ export default function SignIn() {
                                 <Input id="password" type="password" name="password" defaultValue="@peduarte" />
                             </div>
                         </CardContent>
-                        <CardFooter>
-                            <Button type="submit">Sign In</Button>
-                            <Link href={'/sign-up'}>Don't have account?</Link>
+                        <CardFooter className="flex flex-col gap-2">
+                            <Button type="submit" className=" w-full block">Sign In</Button>
+                            <Link href={'/sign-up'} className=" block">Don't have account?</Link>
                         </CardFooter>
                     </Card>
                 </form>
