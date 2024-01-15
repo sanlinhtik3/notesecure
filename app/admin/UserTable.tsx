@@ -138,7 +138,7 @@ export default function UserTable() {
                         <EditUser note={user} />
                         <form action={deletedUser}>
                             <input type="hidden" name="userId" value={user._id} />
-                            <ButtonX color="danger">
+                            <ButtonX>
                                 Delete
                             </ButtonX>
                         </form>
