@@ -29,7 +29,7 @@ export default function Page() {
     const router = useRouter();
 
     useEffect(() => {
-        window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+        (window as any).recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
             'size': 'normal',
             'callback': (response: any) => {
                 console.log(response);
@@ -51,7 +51,7 @@ export default function Page() {
     const handleSendOTP = async () => {
         try {
             const formattedPhoneNumber = `+${phoneNumber.replace(/\D/g, '')}`;
-            const confirmation = await signInWithPhoneNumber(auth, formattedPhoneNumber, window.recaptchaVerifier);
+            const confirmation = await signInWithPhoneNumber(auth, formattedPhoneNumber, (window as any).recaptchaVerifier);
             console.log(confirmation);
             setComfirmationResult(confirmation);
             setOTPSent(true);
@@ -115,8 +115,8 @@ export default function Page() {
                     <Button
                         onClick={otpSent ? handleOTPSubmit : handleSendOTP}
                         variant={`${otpSent ? 'outline' : 'default'}`}
-                        // className={`bg-${otpSent ? 'green' : 'blue'}-500 text-white rounded-md p-2`}
-                        // style={{ backgroundColor: otpSent ? 'green' : 'blue' }}
+                    // className={`bg-${otpSent ? 'green' : 'blue'}-500 text-white rounded-md p-2`}
+                    // style={{ backgroundColor: otpSent ? 'green' : 'blue' }}
                     >
                         {otpSent ? 'Submit' : 'Request OTP'}
                     </Button>
