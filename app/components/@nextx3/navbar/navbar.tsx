@@ -68,7 +68,7 @@ export default function Navbarv({ _id, email, name, asset }: any) {
                             <Link href="#">Login</Link>
                         </NavbarItem>
                         <NavbarItem>
-                            <Button as={Link} color="primary" href="#" variant="flat">
+                            <Button as={Link} href="#" variant="flat">
                                 Sign Up
                             </Button>
                         </NavbarItem>

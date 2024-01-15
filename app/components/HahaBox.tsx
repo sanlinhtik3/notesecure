@@ -39,7 +39,7 @@ export default function HahaBox({ note }: any) {
                                 <Button color="danger" variant="light" onPress={onClose}>
                                     Close
                                 </Button>
-                                <Button color="primary" onPress={onClose}>
+                                <Button onPress={onClose}>
                                     Action
                                 </Button>
                             </ModalFooter>

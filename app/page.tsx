@@ -20,7 +20,7 @@ export default function Home() {
               Get Started
             </Link>
 
-            <Button color="primary" className=' py-6' variant="ghost">Source code</Button>
+            <Button className=' py-6' variant="ghost">Source code</Button>
           </div>
         </div>
       </div>

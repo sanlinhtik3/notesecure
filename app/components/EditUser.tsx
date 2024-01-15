@@ -53,7 +53,7 @@ export default function EditUser({ note }: any) {
                                     <Button color="danger" variant="light" onPress={onClose}>
                                         Close
                                     </Button>
-                                    <ButtonX color="primary">Update</ButtonX>
+                                    <ButtonX>Update</ButtonX>
                                     {/* <Button color="primary" onPress={onClose}>
                                         Action
                                     </Button> */}
