@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button"
 import {
     Card,
     CardContent,
@@ -9,9 +8,9 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-
-import { cookies } from 'next/headers'
 import Link from 'next/link'
+import { Button } from "@/components/ui/button"
+import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { domain } from "../pub-domain"
 
@@ -21,7 +20,7 @@ export default function SignIn() {
     const hasCookie = cookieStore.has('email')
 
     if (hasCookie) {
-        redirect('/admin')
+        redirect('/note')
     }
 
     async function create(formData: FormData) {
@@ -52,6 +51,7 @@ export default function SignIn() {
             cookies().set('email', data.user.email, { secure: true })
             cookies().set('name', data.user.name, { secure: true })
             cookies().set('_id', data.user._id, { secure: true })
+            cookies().set('asset', data.user.asset, { secure: true })
 
             console.log('Login Success', data)
         } catch (e) {

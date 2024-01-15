@@ -2,11 +2,11 @@
 
 import React from "react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, NavbarMenuToggle, NavbarMenuItem, NavbarMenu } from "@nextui-org/react";
-import HasUser from "../../HasUser";
 import Link from "next/link";
-// import { AcmeLogo } from "./AcmeLogo.jsx";
+import { User } from "@nextui-org/react";
+import { AcmeLogo } from "./AcmeLogo";
 
-export default function Navbarv() {
+export default function Navbarv({ _id, email, name, asset }: any) {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     const menuItems = [
@@ -30,7 +30,7 @@ export default function Navbarv() {
                     className="sm:hidden"
                 />
                 <NavbarBrand>
-                    {/* <AcmeLogo />  */}
+                    <AcmeLogo />
                     <p className="font-bold text-inherit">ACME</p>
                 </NavbarBrand>
             </NavbarContent>
@@ -48,14 +48,31 @@ export default function Navbarv() {
                 </NavbarItem>
             </NavbarContent>
             <NavbarContent justify="end">
-                <NavbarItem className="hidden lg:flex">
-                    <Link href="#">Login</Link>
-                </NavbarItem>
-                <NavbarItem>
-                    <Button as={Link} color="primary" href="#" variant="flat">
-                        Sign Up
-                    </Button>
-                </NavbarItem>
+                <User
+                    name={name}
+                    description={(
+                        <Link href="https://twitter.com/jrgarciadev">
+                            {email}
+                        </Link>
+                    )}
+                    avatarProps={{
+                        src: "https://avatars.githubusercontent.com/u/30373425?v=4"
+                    }}
+                />
+                {!_id && (
+                    <>
+                        <NavbarItem className="hidden lg:flex">
+                            <Link href="#">Login</Link>
+                        </NavbarItem>
+                        <NavbarItem>
+                            <Button as={Link} color="primary" href="#" variant="flat">
+                                Sign Up
+                            </Button>
+                        </NavbarItem>
+                    </>
+                )}
+
+
             </NavbarContent>
             <NavbarMenu>
                 {menuItems.map((item, index) => (
