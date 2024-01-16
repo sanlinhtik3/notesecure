@@ -4,7 +4,7 @@ import Avatar from "../components/@nextx3/avatar/avatar";
 import { ButtonX } from "../components/Button";
 import EditNote from "../components/EditNote";
 import HahaBox from "../components/HahaBox";
-import { getNotes } from "../utils/note"
+import { getNotes, getNotesById } from "../utils/note"
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Suspense } from "react";
@@ -16,7 +16,7 @@ export default async function Page() {
 
     const cookieStore = cookies()
     const email = cookieStore.get('email')
-    const _id = cookieStore.get('_id')
+    const _id = cookieStore.get('_id');
     const asset = cookieStore.get('asset')?.value;
 
     const hasCookie = cookieStore.has('email')
@@ -26,6 +26,11 @@ export default async function Page() {
     }
 
     const notes = await getNotes();
+
+    const notesByCurrentUser = await getNotesById(_id?.value);
+
+    // console.log(notesByCurrentUser)
+    // console.log(_id?.value)
 
     return (
         <>
@@ -73,7 +78,7 @@ export default async function Page() {
             <div className="h-10"></div>
 
             <div className="grid lg:grid-cols-2 gap-5">
-                {notes?.map((note: any) => (
+                {notesByCurrentUser?.map((note: any) => (
                     <div key={note._id} className=" border rounded-2xl p-10 shadow-sm">
                         <Suspense fallback={<div>Loading...</div>}>
                             <Avatar userId={note.user} />
