@@ -27,7 +27,7 @@ export default async function Page() {
 
     const notes = await getNotes();
 
-    const notesByCurrentUser = await getNotesById(_id?.value);
+    const notesByCurrentUser = await getNotesById(_id?.value || '');
 
     // console.log(notesByCurrentUser)
     // console.log(_id?.value)
