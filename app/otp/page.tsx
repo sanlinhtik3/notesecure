@@ -19,11 +19,22 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+
+
 export default function Page() {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [otp, setOTP] = useState('');
     const [comfirmationResult, setComfirmationResult] = useState<any>(null);
     const [otpSent, setOTPSent] = useState(false);
+    const [otpSentOpen, setOTPSentOpen] = useState(false);
 
     const auth = getAuth(app);
     const router = useRouter();
@@ -55,8 +66,9 @@ export default function Page() {
             console.log(confirmation);
             setComfirmationResult(confirmation);
             setOTPSent(true);
+            setOTPSentOpen(true);
             setPhoneNumber('');
-            alert('OTP sent successfully');
+            // alert('OTP sent successfully');
         } catch (error) {
             console.log(error);
         }
@@ -74,6 +86,38 @@ export default function Page() {
 
     return (
         <div className=" h-screen flex justify-center items-center">
+            <Dialog open={otpSentOpen} onOpenChange={setOTPSentOpen}>
+                {/* <DialogTrigger>Open</DialogTrigger> */}
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Are you absolutely sure?</DialogTitle>
+                        <DialogDescription>
+                            <div className="space-y-1">
+                                <Label htmlFor="otp">OTP</Label>
+                                <Input
+                                    id="otp"
+                                    type="text"
+                                    value={otp}
+                                    onChange={handleOTPChange}
+                                    placeholder="Enter OTP"
+                                    className="border border-gray-300 rounded-md p-2 mb-4"
+                                />
+                            </div>
+                        </DialogDescription>
+                    </DialogHeader>
+                    <CardFooter className="flex justify-between">
+                        <Button
+                            onClick={otpSent ? handleOTPSubmit : handleSendOTP}
+                            variant={`${otpSent ? 'outline' : 'default'}`}
+                        >
+                            {otpSent && 'Submit'}
+                        </Button>
+                    </CardFooter>
+                </DialogContent>
+            </Dialog>
+
+
+
             <Card className="w-[350px]">
                 <CardHeader>
                     <CardTitle>OTP</CardTitle>
@@ -96,7 +140,7 @@ export default function Page() {
                         />
                     </div>
 
-                    <div className="space-y-1">
+                    {/* <div className="space-y-1">
                         <Label htmlFor="otp">OTP</Label>
                         <Input
                             id="otp"
@@ -106,7 +150,7 @@ export default function Page() {
                             placeholder="Enter OTP"
                             className="border border-gray-300 rounded-md p-2 mb-4"
                         />
-                    </div>
+                    </div> */}
 
 
 
@@ -118,7 +162,7 @@ export default function Page() {
                     // className={`bg-${otpSent ? 'green' : 'blue'}-500 text-white rounded-md p-2`}
                     // style={{ backgroundColor: otpSent ? 'green' : 'blue' }}
                     >
-                        {otpSent ? 'Submit' : 'Request OTP'}
+                        {!otpSent && 'Request OTP'}
                     </Button>
                 </CardFooter>
             </Card>
