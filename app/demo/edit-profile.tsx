@@ -1,27 +1,12 @@
-import { Button } from "@/components/ui/button"
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import EditUser from "../components/EditUser";
-import { cookies } from "next/headers";
+import { domain } from "../pub-domain";
 
 async function getData() {
     // const cookieStore = cookies()
 
     // const theme = cookieStore.get('email')
 
-    // console.log(theme?.value)
-
-
-    const res = await fetch(`http://localhost:3000/api/user?id=65a8ad11005fdfe95874da23`);
+    const res = await fetch(`${domain}/api/user?id=65a8ad11005fdfe95874da23`);
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
 
