@@ -73,6 +73,7 @@ export default function SignUP() {
             // cookies().set('asset', data.asset,)
 
             // console.log('Sign Up Success', data)
+            redirect('/sign-in')
         } catch (e) {
             return { message: 'Failed to create' }
         }
