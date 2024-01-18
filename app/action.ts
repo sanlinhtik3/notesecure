@@ -117,11 +117,13 @@ export async function editUser(formData: FormData) {
   // const user = formData.get('user')
   const name = formData.get("name");
   const asset = formData.get("asset");
+  const password = formData.get("password");
 
   const rawData = {
     _id: _id,
     name: name,
     asset: asset,
+    password: password,
   };
 
   console.log(rawData);

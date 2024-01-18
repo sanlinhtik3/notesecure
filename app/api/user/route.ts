@@ -86,8 +86,8 @@ export async function POST(request: Request, response: Response) {
     // Hash the password using bcrypt before storing it in the database
     const hashedPassword = await bcrypt.hash(data.password, 10);
 
-    const password = "your-secret-password";
-    const encrypted = AES.encrypt(data.name, password).toString();
+    // const password = "your-secret-password";
+    // const encrypted = AES.encrypt(data.name, password).toString();
 
     const users = await User.create({
       name: data.name,
@@ -115,12 +115,21 @@ export async function PUT(request: Request, response: Response) {
   const data = await request.json();
   // return NextResponse.json(data)
 
+  // Validate that email and password are provided
+  if (!data.password) {
+    return NextResponse.json({ error: "password are required" });
+  }
+
   try {
+    // Hash the password using bcrypt before storing it in the database
+    const hashedPassword = await bcrypt.hash(data.password, 10);
+
     const users = await User.findByIdAndUpdate(
       data._id,
       {
         name: data.name,
         asset: data.asset,
+        password: hashedPassword,
       },
       {
         new: true,

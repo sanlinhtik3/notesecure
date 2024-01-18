@@ -38,7 +38,7 @@ export default function SignUP() {
     const hasCookie = cookieStore.has('email')
 
     if (hasCookie) {
-        redirect('/admin')
+        redirect('/sign-in')
     }
 
     async function signUp(formData: FormData) {
@@ -67,12 +67,12 @@ export default function SignUP() {
 
             const data = await response.json()
 
-            cookies().set('email', data.email,)
-            cookies().set('name', data.name,)
-            cookies().set('_id', data._id,)
-            cookies().set('asset', data.asset,)
+            // cookies().set('email', data.email,)
+            // cookies().set('name', data.name,)
+            // cookies().set('_id', data._id,)
+            // cookies().set('asset', data.asset,)
 
-            console.log('Sign Up Success', data)
+            // console.log('Sign Up Success', data)
         } catch (e) {
             return { message: 'Failed to create' }
         }
@@ -103,7 +103,6 @@ export default function SignUP() {
                                 <Input id="password" type="password" name="password" />
                             </div> */}
                             <CheckPassword name="password" />
-                            <button type="submit">Sign Up</button>
                         </CardContent>
                         <CardFooter>
                             <Button type="submit">Sign Up</Button>

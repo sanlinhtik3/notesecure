@@ -5,6 +5,8 @@ import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, NavbarMenuToggl
 import Link from "next/link";
 import { User } from "@nextui-org/react";
 import { AcmeLogo } from "./AcmeLogo";
+import EditUser from "../../EditUser";
+import { EditProfile } from "@/app/demo/edit-profile";
 
 export default function Navbarv({ _id, email, name, asset }: any) {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -62,6 +64,7 @@ export default function Navbarv({ _id, email, name, asset }: any) {
                         src: "https://avatars.githubusercontent.com/u/30373425?v=4"
                     }}
                 />
+                <EditProfile />
                 {!_id && (
                     <>
                         <NavbarItem className="hidden lg:flex">
@@ -74,7 +77,6 @@ export default function Navbarv({ _id, email, name, asset }: any) {
                         </NavbarItem>
                     </>
                 )}
-
 
             </NavbarContent>
             <NavbarMenu>
