@@ -19,7 +19,7 @@ export default async function Page({ params }: { params: { user_id: string } }) 
 
     const data = _id ? await getData(_id?.value) : null
 
-    
+
 
     return (
         <>
