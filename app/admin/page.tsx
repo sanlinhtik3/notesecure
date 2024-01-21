@@ -6,11 +6,15 @@ import UserTable from './UserTable'
 
 export default async function Home() {
     const cookieStore = cookies()
-    const theme = cookieStore.get('email')
+    const asset = cookieStore.get('asset')?.value;
     const hasCookie = cookieStore.has('email')
 
     if (!hasCookie) {
         redirect('/sign-in')
+    }
+
+    if (asset !== 1 || asset === null || asset === undefined) {
+        redirect('/note')
     }
 
     return (

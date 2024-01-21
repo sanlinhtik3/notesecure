@@ -9,14 +9,14 @@ export const getUsers = cache(async () => {
   }
 });
 
-export async function getData(userId: string) {
-  const res = await fetch(`${domain}/api/user?id=${userId}`, {
-    cache: "no-store",
-  });
+// export async function getData(userId: string) {
+//   const res = await fetch(`${domain}/api/user?id=${userId}`, {
+//     cache: "no-store",
+//   });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
+//   if (!res.ok) {
+//     throw new Error("Failed to fetch data");
+//   }
 
-  return res.json();
-}
+//   return res.json();
+// }

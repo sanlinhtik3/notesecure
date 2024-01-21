@@ -3,7 +3,7 @@ import User from "@/app/models/user.model";
 import Error from "next/error";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
-import { AES, enc } from "crypto-js";
+// import { AES, enc } from "crypto-js";
 import { domain } from "@/app/pub-domain";
 
 export async function GET(request: NextRequest) {
@@ -116,9 +116,10 @@ export async function PUT(request: Request, response: Response) {
   // return NextResponse.json(data)
 
   // Validate that email and password are provided
-  if (!data.password) {
-    return NextResponse.json({ error: "password are required" });
-  }
+
+  // if (!data.password) {
+  //   return NextResponse.json({ error: "password are required" });
+  // }
 
   try {
     // Hash the password using bcrypt before storing it in the database

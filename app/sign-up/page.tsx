@@ -67,6 +67,10 @@ export default function SignUP() {
 
             const data = await response.json()
 
+            if (data.email) {
+                redirect('/sign-in')
+            }
+
             // cookies().set('email', data.email,)
             // cookies().set('name', data.name,)
             // cookies().set('_id', data._id,)

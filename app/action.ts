@@ -109,37 +109,3 @@ export async function deletedUser(formData: FormData) {
 
   console.log("deletedNote", deletedNote);
 }
-
-export async function editUser(formData: FormData) {
-  "use server";
-
-  const _id = formData.get("_id");
-  // const user = formData.get('user')
-  const name = formData.get("name");
-  const asset = formData.get("asset");
-  const password = formData.get("password");
-
-  const rawData = {
-    _id: _id,
-    name: name,
-    asset: asset,
-    password: password,
-  };
-
-  console.log(rawData);
-
-  const createUser = await fetch(`${domain}/api/user/`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(rawData),
-  });
-
-  if (!createUser.ok) {
-    return { message: "Failed to Edit" };
-  }
-
-  revalidatePath("/");
-  return await createUser.json();
-}

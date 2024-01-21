@@ -24,6 +24,8 @@ export default function Navbarv({ _id, email, name, asset }: any) {
         "Log Out",
     ];
 
+    console.log(asset)
+
     return (
         <Navbar onMenuOpenChange={setIsMenuOpen}>
             <NavbarContent>
@@ -43,7 +45,7 @@ export default function Navbarv({ _id, email, name, asset }: any) {
                         Note
                     </Link>
                 </NavbarItem>
-                {asset && parseInt(asset) === 1 && (
+                {asset === "2" && (
                     <NavbarItem isActive>
                         <Link href="/admin" aria-current="page">
                             Admin
@@ -64,7 +66,7 @@ export default function Navbarv({ _id, email, name, asset }: any) {
                         src: "https://avatars.githubusercontent.com/u/30373425?v=4"
                     }}
                 />
-                <EditProfile />
+                <EditProfile _id={_id} />
                 {!_id && (
                     <>
                         <NavbarItem className="hidden lg:flex">

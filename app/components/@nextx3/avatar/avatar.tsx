@@ -1,7 +1,20 @@
 "use client"
 
+import { domain } from '@/app/pub-domain';
 import { useState, useEffect } from 'react';
-import { getData } from "@/app/utils/user";
+
+export async function getData(userId: string) {
+    const res = await fetch(`${domain}/api/user?id=${userId}`, {
+        // const res = await fetch(`http://localhost:3000/api/user?id=658e3b14629718e6fff489b5`, {
+        cache: "no-store",
+    });
+
+    if (!res.ok) {
+        throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+}
 
 export default function Avatar({ userId }: { userId: string }) {
     const [loading, setLoading] = useState(true);
@@ -15,6 +28,8 @@ export default function Avatar({ userId }: { userId: string }) {
                 setLoading(true);
 
                 const userData = await getData(userId);
+
+                console.log(userData)
 
                 setData(userData);
             } catch (error) {
