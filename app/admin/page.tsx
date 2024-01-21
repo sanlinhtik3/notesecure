@@ -13,7 +13,7 @@ export default async function Home() {
         redirect('/sign-in')
     }
 
-    if (asset !== 1 || asset === null || asset === undefined) {
+    if (typeof asset === 'number' && asset !== 1 || asset === null || asset === undefined) {
         redirect('/note')
     }
 
