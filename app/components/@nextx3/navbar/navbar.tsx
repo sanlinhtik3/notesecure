@@ -63,7 +63,7 @@ export default function Navbarv({ _id, email, name, asset }: any) {
                 <User
                     name={name}
                     description={(
-                        <Link href="https://twitter.com/jrgarciadev">
+                        <Link href={`/note/${_id}`}>
                             {email}
                         </Link>
                     )}
