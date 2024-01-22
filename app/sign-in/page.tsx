@@ -78,12 +78,9 @@ export default function SignIn() {
         <>
             <div className=" flex justify-center items-center h-screen">
                 <form className="space-y-4 md:space-y-6" action={create}>
-                    <Card>
+                    <Card className="w-96">
                         <CardHeader>
                             <CardTitle>Sign In Account</CardTitle>
-                            <CardDescription>
-                                Make changes to your account here. Click save when you're done.
-                            </CardDescription>
                         </CardHeader>
                         <CardContent className="space-y-2">
                             <div className="space-y-1">

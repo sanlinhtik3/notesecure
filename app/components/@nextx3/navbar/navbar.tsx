@@ -45,6 +45,11 @@ export default function Navbarv({ _id, email, name, asset }: any) {
                         Note
                     </Link>
                 </NavbarItem>
+                <NavbarItem>
+                    <Link color="foreground" href="/about-us">
+                        About Us
+                    </Link>
+                </NavbarItem>
                 {asset === "2" && (
                     <NavbarItem isActive>
                         <Link href="/admin" aria-current="page">

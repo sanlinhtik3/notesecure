@@ -29,6 +29,7 @@ export default function CheckPassword({ name }: any) {
         name: '',
         email: '',
         password: '',
+        confirmPassword: '',
     });
 
     const [passwordErrors, setPasswordErrors] = useState<string[]>([]);
@@ -45,6 +46,8 @@ export default function CheckPassword({ name }: any) {
             ...formData,
             [name]: value,
         });
+
+        console.log(formData)
 
         // Validate password on input change
         if (name === 'password') {
@@ -150,6 +153,24 @@ export default function CheckPassword({ name }: any) {
                     </div>
                 )}
             </div>
+
+            <div className="space-y-1">
+                <Label htmlFor="confirmPassword">confirmPassword</Label>
+                <Input
+                    id="confirmPassword"
+                    type="confirmPassword"
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
+                    onChange={handleInputChange}
+                />
+            </div>
+
+            {formData.password === formData.confirmPassword ? (
+                <div className="text-green-500 text-sm"> Passwords match</div>
+            ) : (
+                <div className="text-red-500 text-sm"> Passwords do not match</div>
+            )}
+
             <div className="flex items-center space-x-2">
                 <div className={`h-2 w-full ${getProgressBarColor(strength)}`} />
                 <div className={`text-sm ${getProgressBarColor(strength)}`}>

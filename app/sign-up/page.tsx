@@ -109,9 +109,9 @@ export default function SignUP() {
                             </div> */}
                             <CheckPassword name="password" />
                         </CardContent>
-                        <CardFooter>
+                        <CardFooter className="flex justify-between">
                             <Button type="submit">Sign Up</Button>
-                            <Link href={'/sign-in'}>Don't have account?</Link>
+                            <Link href={'/sign-in'}>Already have an account!</Link>
                         </CardFooter>
                     </Card>
                 </form>
