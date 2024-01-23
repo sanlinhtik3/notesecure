@@ -155,7 +155,7 @@ export default function CheckPassword({ name }: any) {
             </div>
 
             <div className="space-y-1">
-                <Label htmlFor="confirmPassword">confirmPassword</Label>
+                <Label htmlFor="confirmPassword">Confirm Password</Label>
                 <Input
                     id="confirmPassword"
                     type="confirmPassword"

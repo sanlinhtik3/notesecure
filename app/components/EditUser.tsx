@@ -63,10 +63,10 @@ export default function EditUser({ note }: any) {
                                             <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User Name</label>
                                             <Input id="name" name="name" defaultValue={note?.name === null ? "Unknown" : note?.name} placeholder="Your description here" />
                                         </div>
-                                        <div className="sm:col-span-2">
+                                        {/* <div className="sm:col-span-2">
                                             <label htmlFor="note" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User Asset</label>
                                             <Input id="note" name="asset" value={asset} onChange={(e) => setAsset(e.target.value)} placeholder="Asset" />
-                                        </div>
+                                        </div> */}
                                         <div className="sm:col-span-2">
                                             <label htmlFor="note" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New password</label>
                                             <Input id="note" name="password" placeholder="New Password" />

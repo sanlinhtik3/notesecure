@@ -27,7 +27,7 @@ export default function Navbarv({ _id, email, name, asset }: any) {
     console.log(asset)
 
     return (
-        <Navbar onMenuOpenChange={setIsMenuOpen}>
+        <Navbar onMenuOpenChange={setIsMenuOpen} className=" border-b">
             <NavbarContent>
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -35,7 +35,7 @@ export default function Navbarv({ _id, email, name, asset }: any) {
                 />
                 <NavbarBrand>
                     <AcmeLogo />
-                    <p className="font-bold text-inherit">ACME</p>
+                    {/* <p className="font-bold text-inherit">ACME</p> */}
                 </NavbarBrand>
             </NavbarContent>
 
